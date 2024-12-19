@@ -1,0 +1,28 @@
+name: CI/CD pipeline
+on: push
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: Node Setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Build Project
+        run: npm run build
+
+  Test:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: This is Test Step 
+      run: echo "tested successfully"
+
+  Deploy:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: This is Deploy Step 
+      run: echo "deployed successfully"
